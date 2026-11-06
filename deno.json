@@ -1,0 +1,20 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "start": "deno run --allow-net --allow-env=HOST,PORT,RUNNER_TOKEN,RUNNER_TOKEN_PREVIOUS,POOL_SIZE --allow-run=deno,prlimit src/main.ts",
+    "test": "deno test --allow-run=deno,prlimit --parallel",
+    "check": "deno fmt --check && deno lint && deno check src tests"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.19",
+    "@std/crypto": "jsr:@std/crypto@^1.1.0",
+    "@std/path": "jsr:@std/path@^1.1.6",
+    "@std/streams": "jsr:@std/streams@^1.2.0",
+    "pyodide": "npm:pyodide@314.0.7",
+    "zod": "npm:zod@^4.6.7"
+  },
+  "fmt": {
+    "lineWidth": 100
+  },
+  "exclude": ["node_modules"]
+}
