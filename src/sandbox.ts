@@ -84,10 +84,9 @@ export class Sandbox {
   async run(request: RunRequest): Promise<RunResponse> {
     const start = performance.now();
     const results: (CaseResult | DatasetResult)[] = [];
-    const [resultSchema, ids]: [z.ZodType<CaseResult | DatasetResult>, string[]] =
-      request.language === "python"
-        ? [CaseResult, request.cases.map((item) => item.id)]
-        : [DatasetResult, request.datasets.map((item) => item.id)];
+    const python = request.language === "python";
+    const resultSchema: z.ZodType<CaseResult | DatasetResult> = python ? CaseResult : DatasetResult;
+    const ids = (python ? request.cases : request.datasets).map((item) => item.id);
     let done: Extract<SandboxMessage, { type: "done" }> | undefined;
     let problem: string | undefined;
     let timedOut = false;

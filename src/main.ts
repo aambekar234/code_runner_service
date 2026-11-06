@@ -9,7 +9,8 @@ const server = Deno.serve(
   createHandler(pool, config.tokens),
 );
 
-// Railway sends SIGTERM on redeploy: finish the runs in flight, then stop the idle sandboxes.
+// Platforms send SIGTERM before stopping a container: finish the runs in flight, then stop the
+// idle sandboxes.
 Deno.addSignalListener("SIGTERM", async () => {
   await server.shutdown();
   await pool.close();

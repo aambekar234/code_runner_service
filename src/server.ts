@@ -1,6 +1,6 @@
 /**
- * The HTTP API: `GET /health` for Railway's deploy check, and `POST /run` for the live service,
- * which must send `Authorization: Bearer <RUNNER_TOKEN>`.
+ * The HTTP API: `GET /health` for deploy health checks, and `POST /run`, whose caller must send
+ * `Authorization: Bearer <RUNNER_TOKEN>`.
  */
 
 import { timingSafeEqual } from "@std/crypto/timing-safe-equal";

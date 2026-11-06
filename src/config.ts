@@ -35,7 +35,7 @@ export const LIMITS = {
 } as const;
 
 const MIN_TOKEN_CHARS = 32;
-/** IPv6 and IPv4 together; older Railway environments reach services over IPv6 only. */
+/** IPv6 and IPv4 together, since some private networks reach services over IPv6 only. */
 const DEFAULT_HOST = "::";
 const DEFAULT_PORT = 8080;
 const DEFAULT_POOL_SIZE = 2;
